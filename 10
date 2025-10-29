@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição de Imagens</title>
+</head>
+<body>
+    <h1>Galeria de Imagens</h1>
+    <img src="https://picsum.photos/id/237/600/400" id="imagem" alt="Imagem aleatória">
+    
+    <script>
+        const imagensDisponiveis = [ 
+            
+        ];
+
+        let imagemAtual = 0;
+
+        function atualizarImagem(){
+            imagemAtual++;
+            if(imagemAtual >= imagensDisponiveis.length){
+                imagemAtual = 0;
+            }
+            document.getElementById("imagem").src = imagensDisponiveis[imagemAtual];
+        }
+
+        setInterval(atualizarImagem, 1000);
+    </script>
+</body>
+</html>
