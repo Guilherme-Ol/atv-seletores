@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input {
+            padding: 8px;
+            margin-top: 8px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .erro {
+            color: #d9534f;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulário de Cadastro</h2>
+    <form id="cadastroForm">
+        <label for="nomeCompleto">Nome Completo:</label>
+        <input type="text" id="nomeCompleto" name="nomeCompleto">
+        <div class="erro" id="erroNome"></div>
+
+        <label for="emailUsuario">E-mail:</label>
+        <input type="text" id="emailUsuario" name="emailUsuario">
+        <div class="erro" id="erroEmail"></div>
+
+        <label for="senhaUsuario">Senha:</label>
+        <input type="password" id="senhaUsuario" name="senhaUsuario">
+        <div class="erro" id="erroSenha"></div>
+
+        <label for="confirmarSenhaUsuario">Confirmar Senha:</label>
+        <input type="password" id="confirmarSenhaUsuario" name="confirmarSenhaUsuario">
+        <div class="erro" id="erroConfirmarSenha"></div>
+
+        <label>
+            <input type="checkbox" id="exibirSenha"> Mostrar Senha
+        </label>
+
+        <br><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        const cadastroForm = document.getElementById("cadastroForm");
+
+        const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const regexSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+        cadastroForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário para mostrar erros de validação
+
+            // Limpar mensagens de erro anteriores
+            document.getElementById("erroNome").textContent = "";
+            document.getElementById("erroEmail").textContent = "";
+            document.getElementById("erroSenha").textContent = "";
+            document.getElementById("erroConfirmarSenha").textContent = "";
+
+            const nome = document.getElementById("nomeCompleto").value;
+            const email = document.getElementById("emailUsuario").value;
+            const senha = document.getElementById("senhaUsuario").value;
+            const confirmarSenha = document.getElementById("confirmarSenhaUsuario").value;
+
+            let formValido = true;
+
+            // Validação do nome
+            if (nome.length < 3) {
+                document.getElementById("erroNome").textContent = "O nome precisa ter pelo menos 3 caracteres.";
+                formValido = false;
+            }
+
+            // Validação do e-mail
+            if (!regexEmail.test(email)) {
+                document.getElementById("erroEmail").textContent = "E-mail inválido!";
+                formValido = false;
+            }
+
+            // Validação da senha
+            if (!regexSenha.test(senha)) {
+                document.getElementById("erroSenha").textContent = "A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, um número e um caractere especial.";
+                formValido = false;
+            }
+
+            // Validação do campo confirmar senha
+            if (senha !== confirmarSenha) {
+                document.getElementById("erroConfirmarSenha").textContent = "As senhas não coincidem!";
+                formValido = false;
+            }
+
+            if (formValido) {
+                alert("Cadastro realizado com sucesso!");
+            }
+        });
+
+        const exibirSenha = document.getElementById("exibirSenha");
+        exibirSenha.addEventListener("change", function() {
+            const tipoSenha = exibirSenha.checked ? "text" : "password";
+            document.getElementById("senhaUsuario").type = tipoSenha;
+            document.getElementById("confirmarSenhaUsuario").type = tipoSenha;
+        });
+    </script>
+</body>
+</html>
