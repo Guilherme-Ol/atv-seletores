@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brinque com o Wapples!</title>
+</head>
+<body>
+    <h1>Divirta-se com o Wapples</h1>
+
+    <p id="mensagemReacao"></p>
+
+    <img id="wapplesImg" src="/img/wapples.png" alt="Imagem do Wapples">
+
+    <script>
+        const wapples = document.getElementById("wapplesImg");
+        const mensagem = document.getElementById("mensagemReacao");
+
+        wapples.addEventListener("mouseenter", function() {
+            mensagem.innerText = "O que você vai fazer com ele agora?";
+        });
+
+        wapples.addEventListener("mouseleave", function() {
+            mensagem.innerText = "Foi só uma brincadeira, né";
+        });
+
+        wapples.addEventListener("mousemove", function() {
+            mensagem.innerText = "Isso faz cócegas!";
+        });
+
+        wapples.addEventListener("click", function() {
+            mensagem.innerText = "Já chega de brincar com o Wapples!";
+        });
+    </script>
+</body>
+</html>
