@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Sabor do Sorvete</title>
+</head>
+<body>
+
+    <button id="temaButton" value="claro">Mudar para o modo escuro</button>
+    <br><br>
+    <label for="saborSorvete">Qual sabor de sorvete você deseja?</label>
+    <input type="text" id="saborSorvete">
+    <p id="saborResposta"></p>
+
+    <script>
+        const resposta = document.getElementById("saborResposta");
+        const inputSabor = document.getElementById("saborSorvete");
+        const temaButton = document.getElementById("temaButton");
+
+        temaButton.addEventListener("click", function() {
+            if (temaButton.value === "claro") {
+                document.body.style.color = 'white';
+                document.body.style.backgroundColor = 'black';
+                temaButton.value = "escuro";
+                temaButton.textContent = "Mudar para o modo claro"; // Alterando o texto do botão
+            } else {
+                document.body.style.color = 'black';
+                document.body.style.backgroundColor = 'white';
+                temaButton.value = "claro";
+                temaButton.textContent = "Mudar para o modo escuro"; // Alterando o texto do botão de volta
+            }
+        });
+
+        inputSabor.addEventListener("input", function() {
+            const sabor = inputSabor.value.trim().toLowerCase();
+            if (sabor.length >= 3) {
+                switch(sabor) {
+                    case "chocolate":
+                        resposta.textContent = "Chocolate! Boa.";
+                        break;
+                    case "flocos":
+                        resposta.textContent = "Flocos, massa!";
+                        break;
+                    case "morango":
+                        resposta.textContent = "Morango é muito bom!";
+                        break;
+                    default:
+                        resposta.textContent = "esse sabor eu não conheço.";
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
