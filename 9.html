@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorvete Delicioso</title>
+</head>
+<body>
+
+    <button id="modoTema" value="claro">Ativar modo escuro</button>
+    <br><br>
+    <label for="inputSabor">Qual sabor de sorvete você gostaria?</label>
+    <input type="text" id="inputSabor">  
+    <p id="mensagemResposta"></p>
+
+    
+    <script>
+        const respostaElemento = document.getElementById("mensagemResposta");
+        const campoSabor = document.getElementById("inputSabor");
+        const botaoTema = document.getElementById("modoTema");
+
+        botaoTema.addEventListener("click", function() {
+            if (botaoTema.value === "claro") {
+                document.body.style.color = 'white';
+                document.body.style.backgroundColor = 'black';
+                botaoTema.value = "escuro";
+                botaoTema.textContent = "Ativar modo claro"; // Alterando o texto do botão
+            } else {
+                document.body.style.color = 'black';
+                document.body.style.backgroundColor = 'white';
+                botaoTema.value = "claro";
+                botaoTema.textContent = "Ativar modo escuro"; // Alterando o texto do botão de volta
+            }
+        });
+
+        campoSabor.addEventListener("input", () => {
+            const sabor = campoSabor.value.trim().toLowerCase();
+            if (sabor.length >= 3) {
+                if (sabor === "chocolate") {
+                    respostaElemento.textContent = "Chocolate, massa!";
+                } else if (sabor === "flocos") {
+                    respostaElemento.textContent = "Flocos é bão!";
+                } else {
+                    respostaElemento.textContent = "Não conheço esse sabor...";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
