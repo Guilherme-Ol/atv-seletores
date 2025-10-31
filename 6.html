@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Nomes Fantásticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        textarea {
+            margin-top: 10px;
+            width: 80%;
+            height: 60px;
+            resize: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1> Gerador de Nomes Épicos </h1>
+
+    <button id="btnGerar">Gerar Nome</button> <br>
+
+    <textarea id="campoNome" placeholder="Seu nome mágico aparecerá aqui..." readonly></textarea>
+
+    <script>
+        const titulos = ["Sr.", "Lady", "Lord", "Capitão", "Mestre", "Dama", "Conde"];
+        const nomes = ["Artemis", "Ragnar", "Lúthien", "Eldor", "Morgana", "Galahad", "Éowyn"];
+        const classes = ["Feiticeiro", "Cavaleiro", "Caçador", "Bardo", "Guardião", "Paladino", "Arcanista"];
+        const reinos = ["Camelot", "Asgard", "Valfenda", "Nárnia", "Gondor", "Avalon", "Atlantis"];
+
+        const botao = document.querySelector("#btnGerar");
+        const campo = document.querySelector("#campoNome");
+
+        botao.addEventListener("click", () => {
+            const titulo = titulos[Math.floor(Math.random() * titulos.length)];
+            const nome = nomes[Math.floor(Math.random() * nomes.length)];
+            const classe = classes[Math.floor(Math.random() * classes.length)];
+            const reino = reinos[Math.floor(Math.random() * reinos.length)];
+
+            const nomeFinal = `${titulo} ${nome}, ${classe} de ${reino}`;
+
+            campo.value = nomeFinal;
+        });
+    </script>
+</body>
+</html>
