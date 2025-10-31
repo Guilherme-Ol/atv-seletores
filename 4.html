@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #valor {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #0078d4;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        #resetar {
+            background-color: #ff4b4b;
+        }
+
+        #resetar:hover {
+            background-color: #d63c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔢 Contador Interativo</h1>
+    <p id="valor">0</p>
+
+    <button id="btnAumentar">Aumentar</button>
+    <button id="resetar">Zerar</button>
+
+    <script>
+        const display = document.querySelector("#valor");
+        const botaoMais = document.querySelector("#btnAumentar");
+        const botaoReset = document.querySelector("#resetar");
+
+        let numero = 0;
+
+        botaoMais.addEventListener("click", () => {
+            numero++;
+            display.textContent = numero;
+        });
+
+        botaoReset.addEventListener("click", () => {
+            numero = 0;
+            display.textContent = numero;
+        });
+    </script>
+</body>
+</html>
