@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Título</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        h1 {
+            transition: all 0.4s ease;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            margin: 8px;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 8px 15px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Olá, mundo!</h1>
+
+    <label for="corTitulo">Escolha uma cor:</label>
+    <input type="color" id="corTitulo">
+
+    <br><br>
+
+    <label for="novoTexto">Novo texto:</label>
+    <input type="text" id="novoTexto" placeholder="Digite algo...">
+
+    <br><br>
+
+    <button id="btnAtualizar">Atualizar título</button>
+
+    <script>
+        const titulo = document.getElementById("titulo");
+        const campoCor = document.getElementById("corTitulo");
+        const campoTexto = document.getElementById("novoTexto");
+        const botao = document.getElementById("btnAtualizar");
+
+        botao.addEventListener("click", () => {
+            const textoAtual = titulo.textContent;
+            const textoDigitado = campoTexto.value.trim();
+            const novaCor = campoCor.value;
+            const tamanhoAleatorio = `${Math.floor(Math.random() * 50) + 30}px`;
+
+            if (textoDigitado && textoDigitado !== textoAtual) {
+                titulo.textContent = textoDigitado;
+                titulo.style.color = novaCor;
+                titulo.style.fontSize = tamanhoAleatorio;
+            }
+        });
+    </script>
+</body>
+</html>
