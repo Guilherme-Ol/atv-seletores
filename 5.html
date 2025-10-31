@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinâmica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            background: #f2f2f2;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="minhaLista">
+        <li>Item nº 1</li>
+    </ul>
+
+    <button id="botaoAdicionar">Adicionar novo item</button>
+
+    <script>
+        const lista = document.querySelector("#minhaLista");
+        const botao = document.querySelector("#botaoAdicionar");
+
+        botao.addEventListener("click", () => {
+            const totalItens = lista.children.length;
+            const novoLi = document.createElement("li");
+            novoLi.textContent = `Item nº ${totalItens + 1}`;
+            lista.appendChild(novoLi);
+        });
+    </script>
+</body>
+</html>
